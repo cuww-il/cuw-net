@@ -6,7 +6,7 @@
     <title>NexaNode — Прошивки, Прокси и Джейлбрейк</title>
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <style>
-        /* БАЗОВЫЕ НАСТРОЙКИ ДЛЯ СВЕТЛОЙ ТЕМЫ */
+        /* ☀️ ЦВЕТА ДЛЯ СВЕТЛОЙ ТЕМЫ (ПО УМОЛЧАНИЮ) */
         :root {
             --bg-color: #F1F5F9;
             --text-color: #334155;
@@ -20,18 +20,20 @@
             --glow-opacity: 0.6;
         }
 
-        /* 🌙 НАСТРОЙКИ ДЛЯ ТЁМНОЙ ТЕМЫ */
-        [data-theme="dark"] {
-            --bg-color: #0B0F19; 
-            --text-color: #94A3B8;
-            --text-main: #F8FAFC;
-            --header-bg: rgba(15, 23, 42, 0.75);
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(255, 255, 255, 0.05);
-            --svg-stroke: #F8FAFC;
-            --svg-fill: #0B0F19;
-            --nav-color: #94A3B8;
-            --glow-opacity: 0.9; 
+        /* 🌙 АВТО-ПЕРЕКЛЮЧЕНИЕ НА ТЁМНУЮ ТЕМУ (ЕСЛИ ОНА ВКЛЮЧЕНА НА УСТРОЙСТВЕ) */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0B0F19; 
+                --text-color: #94A3B8;
+                --text-main: #F8FAFC;
+                --header-bg: rgba(15, 23, 42, 0.75);
+                --card-bg: rgba(30, 41, 59, 0.7);
+                --card-border: rgba(255, 255, 255, 0.05);
+                --svg-stroke: #F8FAFC;
+                --svg-fill: #0B0F19;
+                --nav-color: #94A3B8;
+                --glow-opacity: 0.9; 
+            }
         }
 
         body {
@@ -106,15 +108,9 @@
             display: block;
         }
 
-        /* Плавное изменение цвета логотипа при смене темы */
         .logo-stroke { stroke: var(--svg-stroke); transition: stroke 0.3s; }
         .logo-bg { fill: var(--svg-fill); transition: fill 0.3s; }
         .logo-text { fill: var(--svg-stroke); transition: fill 0.3s; }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-        }
 
         nav a {
             color: var(--nav-color);
@@ -129,25 +125,6 @@
 
         nav a:hover {
             color: var(--text-main); 
-        }
-
-        /* КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ */
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--nav-color);
-            color: var(--text-main);
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-left: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .theme-toggle:hover {
-            background-color: var(--text-main);
-            color: var(--bg-color);
         }
 
         .main-hero {
@@ -170,14 +147,15 @@
             transition: color 0.3s;
         }
 
+        /* Умная сетка карточек: теперь они никогда не пропадут и красиво переносятся на планшетах */
         .features-grid {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             padding: 40px 20px;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Разрешаем перенос на новую строку */
         }
 
         .card {
@@ -187,6 +165,7 @@
             border-radius: 20px;
             padding: 30px;
             width: 280px;
+            min-height: 180px;
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
         }
@@ -237,14 +216,12 @@
 </head>
 <body>
 
-    <!-- ТРИ ОТЧЁТЛИВЫХ ЯРКИХ БЛИКА -->
     <div class="glow-1"></div>
     <div class="glow-2"></div>
     <div class="glow-3"></div>
 
     <header>
         <div class="logo-box">
-            <!-- НАШ ОП-АРТ ЛОГОТИП С ИСПРАВЛЕННЫМИ СТИЛЯМИ -->
             <svg viewBox="0 0 420 100" xmlns="http://w3.org">
               <clipPath id="hexClip">
                 <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" />
@@ -269,14 +246,11 @@
               <text x="130" y="64" font-family="system-ui, sans-serif" font-size="36" font-weight="900" letter-spacing="4px" class="logo-text">NEXANODE</text>
             </svg>
         </div>
-        <div class="nav-container">
-            <nav>
-                <a href="#proxy">Прокси</a>
-                <a href="#cydia">iOS & Cydia</a>
-                <a href="#firmware">Прошивки</a>
-            </nav>
-            <button class="theme-toggle" id="themeBtn">Тёмная тема</button>
-        </div>
+        <nav>
+            <a href="#proxy">Прокси</a>
+            <a href="#cydia">iOS & Cydia</a>
+            <a href="#firmware">Прошивки</a>
+        </nav>
     </header>
 
     <main class="main-hero">
@@ -284,7 +258,6 @@
         <p>Портал о прошивках, обходе ограничений, прокси-серверах и кастомизации мобильных устройств.</p>
     </main>
 
-    <!-- ТРИ ОФИЦИАЛЬНЫЕ КАРТОЧКИ (ВСЕ НА МЕСТЕ!) -->
     <section class="features-grid">
         <div class="card" id="proxy">
             <div class="status-badge">
@@ -298,4 +271,12 @@
             <h3>iOS & Cydia</h3>
             <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
         </div>
-const btn = document.getElementById('themeBtn');// Проверяем прошлый выбор пользователя при загрузкеif (localStorage.getItem('theme') === 'dark') {document.documentElement.setAttribute('data-theme', 'dark');btn.textContent = 'Светлая тема';}// Логика кнопкиbtn.addEventListener('click', function() {if (document.documentElement.getAttribute('data-theme') === 'dark') {document.documentElement.removeAttribute('data-theme');btn.textContent = 'Тёмная тема';localStorage.setItem('theme', 'light');} else {document.documentElement.setAttribute('data-theme', 'dark');btn.textContent = 'Светлая тема';localStorage.setItem('theme', 'dark');}});
+
+        <div class="card" id="firmware">
+            <h3>Кастомные Прошивки</h3>
+            <p>База чистых и кастомных прошивок для смартфонов. Инструкции по разблокировке загрузчиков (Bootloader).</p>
+        </div>
+    </section>
+
+</body>
+</html>
