@@ -11,6 +11,34 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 0;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* КРУТЫЕ ФОНОВЫЕ БЛИКИ (GLOW EFFECTS) */
+        body::before, body::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1; /* Уводим на самый задний план, под текст */
+            pointer-events: none;
+        }
+
+        /* Первый фиолетовый блик слева вверху */
+        body::before {
+            top: -100px;
+            left: -100px;
+        }
+
+        /* Второй голубой блик справа в районе карточек */
+        body::after {
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            top: 300px;
+            right: -100px;
         }
 
         header {
@@ -18,8 +46,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 40px;
-            background-color: #FFFFFF; 
+            background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачная шапка */
+            backdrop-filter: blur(10px); /* Эффект матового стекла */
             border-bottom: 1px solid #E2E8F0; 
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .logo-box {
@@ -27,8 +59,8 @@
             align-items: center;
         }
 
-        .logo-box svg {
-            height: 55px; /* Размер увеличен, чтобы рассмотреть все линии */
+        .logo-box img {
+            height: 45px; 
             display: block;
         }
 
@@ -75,19 +107,22 @@
             flex-wrap: wrap;
         }
 
+        /* Прокачали карточки, чтобы они стильно смотрелись на фоне бликов */
         .card {
-            background-color: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
             border-radius: 12px;
             padding: 30px;
             width: 280px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            border-color: #CBD5E1;
         }
 
         .card h3 {
@@ -130,49 +165,7 @@
 
     <header>
         <div class="logo-box">
-            <!-- ЛОГОТИП С ЛИНЕЙНЫМ ЛАБИРИНТОМ ПО КАРТИНКЕ -->
-            <svg viewBox="0 0 520 120" xmlns="http://w3.org">
-              <!-- Маска, чтобы линии не вылезали за границы шестиугольника -->
-              <clipPath id="hexClip">
-                <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" />
-              </clipPath>
-
-              <g transform="translate(10, 10)">
-                <!-- Инженерный внешний круг разметки -->
-                <circle cx="50" cy="50" r="48" fill="none" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3" /> 
-
-                <!-- Внутренности шестиугольника, заполненные изгибающимися параллельными линиями -->
-                <g clip-path="url(#hexClip)" fill="none" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round">
-                    <!-- Задний белый фон под линии -->
-                    <polygon points="50,0 100,28 100,72 50,100 0,72 0,28" fill="#FFFFFF" stroke="none" />
-                    
-                    <!-- Вертикальные параллельные линии слева, переходящие в дуги -->
-                    <path d="M15,20 L15,50 A35,35 0 0,0 50,85 L85,85" />
-                    <path d="M22,20 L22,50 A28,28 0 0,0 50,78 L85,78" />
-                    <path d="M29,20 L29,50 A21,21 0 0,0 50,71 L85,71" />
-                    <path d="M36,20 L36,50 A14,14 0 0,0 50,64 L85,64" />
-                    <path d="M43,20 L43,50 A7,7 0 0,0 50,57 L85,57" />
-
-                    <!-- Вертикальные параллельные линии справа, уходящие наверх -->
-                    <path d="M85,80 L85,50 A35,35 0 0,0 50,15 L15,15" />
-                    <path d="M78,80 L78,50 A28,28 0 0,0 50,22 L15,22" />
-                    <path d="M71,80 L71,50 A21,21 0 0,0 50,29 L15,29" />
-                    <path d="M64,80 L64,50 A14,14 0 0,0 50,36 L15,36" />
-                    <path d="M57,80 L57,50 A7,7 0 0,0 50,43 L15,43" />
-                </g>
-
-                <!-- Четкий жирный внешний контур шестиугольника поверх линий -->
-                <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#0F172A" stroke-width="5" stroke-linejoin="round" />
-              </g>
-
-              <!-- НАЗВАНИЕ СЕРВИСА -->
-              <text x="140" y="68" 
-                    font-family="system-ui, -apple-system, sans-serif" 
-                    font-size="40" 
-                    font-weight="900" 
-                    letter-spacing="5px" 
-                    fill="#0F172A">NEXANODE</text>
-            </svg>
+            <img src="logo.svg" alt="NexaNode Logo">
         </div>
         <nav>
             <a href="#proxy">Прокси</a>
