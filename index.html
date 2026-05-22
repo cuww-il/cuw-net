@@ -13,7 +13,7 @@
             --text-main: #0F172A;
             --header-bg: rgba(255, 255, 255, 0.75);
             --card-bg: rgba(255, 255, 255, 0.75);
-            --card-border: rgba(255, 255, 255, 0.6);
+            --card-border: rgba(226, 232, 240, 0.8);
             --svg-stroke: #0F172A;
             --svg-fill: #FFFFFF;
             --nav-color: #475569;
@@ -22,7 +22,7 @@
 
         /* 🌙 НАСТРОЙКИ ДЛЯ ТЁМНОЙ ТЕМЫ */
         [data-theme="dark"] {
-            --bg-color: #0B0F19; /* Глубокий хакерский фон */
+            --bg-color: #0B0F19; 
             --text-color: #94A3B8;
             --text-main: #F8FAFC;
             --header-bg: rgba(15, 23, 42, 0.75);
@@ -31,7 +31,7 @@
             --svg-stroke: #F8FAFC;
             --svg-fill: #0B0F19;
             --nav-color: #94A3B8;
-            --glow-opacity: 0.8; /* В темноте блики сияют ярче! */
+            --glow-opacity: 0.9; 
         }
 
         body {
@@ -43,7 +43,7 @@
             position: relative;
             overflow-x: hidden;
             min-height: 100vh;
-            transition: background-color 0.3s, color 0.3s; /* Плавная смена темы */
+            transition: background-color 0.3s, color 0.3s; 
         }
 
         /* НЕОНОВЫЕ БЛИКИ */
@@ -106,8 +106,8 @@
             display: block;
         }
 
+        /* Плавное изменение цвета логотипа при смене темы */
         .logo-stroke { stroke: var(--svg-stroke); transition: stroke 0.3s; }
-        .logo-fill { fill: var(--svg-stroke); transition: fill 0.3s; }
         .logo-bg { fill: var(--svg-fill); transition: fill 0.3s; }
         .logo-text { fill: var(--svg-stroke); transition: fill 0.3s; }
 
@@ -136,7 +136,7 @@
             background: none;
             border: 1px solid var(--nav-color);
             color: var(--text-main);
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             cursor: pointer;
             margin-left: 30px;
@@ -237,13 +237,14 @@
 </head>
 <body>
 
+    <!-- ТРИ ОТЧЁТЛИВЫХ ЯРКИХ БЛИКА -->
     <div class="glow-1"></div>
     <div class="glow-2"></div>
     <div class="glow-3"></div>
 
     <header>
         <div class="logo-box">
-            <!-- НАШ ЛИНЕЙНЫЙ ОП-АРТ ЛОГОТИП С УМНЫМИ КЛАССАМИ ДЛЯ СМЕНЫ ЦВЕТА -->
+            <!-- НАШ ОП-АРТ ЛОГОТИП С ИСПРАВЛЕННЫМИ СТИЛЯМИ -->
             <svg viewBox="0 0 420 100" xmlns="http://w3.org">
               <clipPath id="hexClip">
                 <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" />
@@ -274,7 +275,6 @@
                 <a href="#cydia">iOS & Cydia</a>
                 <a href="#firmware">Прошивки</a>
             </nav>
-            <!-- КНОПКА-ПЕРЕКЛЮЧАТЕЛЬ -->
             <button class="theme-toggle" id="themeBtn">Тёмная тема</button>
         </div>
     </header>
@@ -284,6 +284,7 @@
         <p>Портал о прошивках, обходе ограничений, прокси-серверах и кастомизации мобильных устройств.</p>
     </main>
 
+    <!-- ТРИ ОФИЦИАЛЬНЫЕ КАРТОЧКИ (ВСЕ НА МЕСТЕ!) -->
     <section class="features-grid">
         <div class="card" id="proxy">
             <div class="status-badge">
@@ -295,3 +296,6 @@
 
         <div class="card" id="cydia">
             <h3>iOS & Cydia</h3>
+            <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
+        </div>
+
