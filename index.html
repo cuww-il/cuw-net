@@ -4,28 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexaNode — Прошивки, Прокси и Джейлбрейк</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <style>
+        /* БАЗОВЫЕ НАСТРОЙКИ ДЛЯ СВЕТЛОЙ ТЕМЫ */
+        :root {
+            --bg-color: #F1F5F9;
+            --text-color: #334155;
+            --text-main: #0F172A;
+            --header-bg: rgba(255, 255, 255, 0.75);
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --card-border: rgba(255, 255, 255, 0.6);
+            --svg-stroke: #0F172A;
+            --svg-fill: #FFFFFF;
+            --nav-color: #475569;
+            --glow-opacity: 0.6;
+        }
+
+        /* 🌙 НАСТРОЙКИ ДЛЯ ТЁМНОЙ ТЕМЫ */
+        [data-theme="dark"] {
+            --bg-color: #0B0F19; /* Глубокий хакерский фон */
+            --text-color: #94A3B8;
+            --text-main: #F8FAFC;
+            --header-bg: rgba(15, 23, 42, 0.75);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --svg-stroke: #F8FAFC;
+            --svg-fill: #0B0F19;
+            --nav-color: #94A3B8;
+            --glow-opacity: 0.8; /* В темноте блики сияют ярче! */
+        }
+
         body {
-            background-color: #F1F5F9; 
-            color: #1E293B; 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
             font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 0;
             position: relative;
             overflow-x: hidden;
             min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s; /* Плавная смена темы */
         }
 
-        /* 🌟 МОЩНЫЕ И ОТЧЁТЛИВЫЕ НЕОНОВЫЕ БЛИКИ 🌟 */
+        /* НЕОНОВЫЕ БЛИКИ */
         .glow-1, .glow-2, .glow-3 {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
             z-index: -1;
-            filter: blur(90px); /* Красивое размытие краев */
+            filter: blur(90px);
+            opacity: var(--glow-opacity);
+            transition: opacity 0.3s;
         }
 
-        /* Огромный фиолетовый блик слева сверху */
         .glow-1 {
             background: radial-gradient(circle, #818CF8 0%, #6366F1 50%, rgba(255,255,255,0) 100%);
             width: 600px;
@@ -34,7 +65,6 @@
             left: -150px;
         }
 
-        /* Яркий голубой блик справа по центру (под карточками) */
         .glow-2 {
             background: radial-gradient(circle, #38BDF8 0%, #0EA5E9 50%, rgba(255,255,255,0) 100%);
             width: 600px;
@@ -43,7 +73,6 @@
             right: -150px;
         }
 
-        /* Дополнительный розовый блик по центру снизу для максимальной красоты */
         .glow-3 {
             background: radial-gradient(circle, #F472B6 0%, #EC4899 40%, rgba(255,255,255,0) 100%);
             width: 450px;
@@ -57,12 +86,13 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 40px;
-            background-color: rgba(255, 255, 255, 0.75); 
-            backdrop-filter: blur(16px); /* Эффект дорогого матового стекла */
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8); 
+            background-color: var(--header-bg); 
+            backdrop-filter: blur(16px); 
+            border-bottom: 1px solid rgba(226, 232, 240, 0.2); 
             position: sticky;
             top: 0;
             z-index: 10;
+            transition: background-color 0.3s;
         }
 
         .logo-box {
@@ -76,8 +106,18 @@
             display: block;
         }
 
+        .logo-stroke { stroke: var(--svg-stroke); transition: stroke 0.3s; }
+        .logo-fill { fill: var(--svg-stroke); transition: fill 0.3s; }
+        .logo-bg { fill: var(--svg-fill); transition: fill 0.3s; }
+        .logo-text { fill: var(--svg-stroke); transition: fill 0.3s; }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
         nav a {
-            color: #475569;
+            color: var(--nav-color);
             text-decoration: none;
             margin-left: 25px;
             font-weight: 700;
@@ -88,7 +128,26 @@
         }
 
         nav a:hover {
-            color: #0F172A; 
+            color: var(--text-main); 
+        }
+
+        /* КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--nav-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--text-main);
+            color: var(--bg-color);
         }
 
         .main-hero {
@@ -98,16 +157,17 @@
 
         .main-hero h1 {
             font-size: 3rem;
-            color: #0F172A; 
+            color: var(--text-main); 
             margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); /* Подсветка под текстом */
+            transition: color 0.3s;
         }
 
         .main-hero p {
             font-size: 1.2rem;
-            color: #475569;
+            color: var(--text-color);
             max-width: 600px;
             margin: 0 auto;
+            transition: color 0.3s;
         }
 
         .features-grid {
@@ -120,16 +180,15 @@
             flex-wrap: wrap;
         }
 
-        /* Карточки из "стекла", парящие над бликами */
         .card {
-            background-color: rgba(255, 255, 255, 0.75);
+            background-color: var(--card-bg);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--card-border);
             border-radius: 20px;
             padding: 30px;
             width: 280px;
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
         }
 
         .card:hover {
@@ -140,15 +199,17 @@
 
         .card h3 {
             font-size: 1.4rem;
-            color: #0F172A;
+            color: var(--text-main);
             margin-top: 0;
             margin-bottom: 10px;
+            transition: color 0.3s;
         }
 
         .card p {
-            color: #475569;
+            color: var(--text-color);
             font-size: 0.95rem;
             line-height: 1.5;
+            transition: color 0.3s;
         }
 
         .status-badge {
@@ -176,22 +237,21 @@
 </head>
 <body>
 
-    <!-- ТРИ ОТЧЁТЛИВЫХ ЯРКИХ БЛИКА -->
     <div class="glow-1"></div>
     <div class="glow-2"></div>
     <div class="glow-3"></div>
 
     <header>
         <div class="logo-box">
-            <!-- НАШ ЛИНЕЙНЫЙ ОП-АРТ ЛОГОТИП -->
+            <!-- НАШ ЛИНЕЙНЫЙ ОП-АРТ ЛОГОТИП С УМНЫМИ КЛАССАМИ ДЛЯ СМЕНЫ ЦВЕТА -->
             <svg viewBox="0 0 420 100" xmlns="http://w3.org">
               <clipPath id="hexClip">
                 <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" />
               </clipPath>
               <g transform="translate(5, 0)">
                 <circle cx="50" cy="50" r="48" fill="none" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3" /> 
-                <g clip-path="url(#hexClip)" fill="none" stroke="#0F172A" stroke-width="2.8" stroke-linecap="round">
-                    <polygon points="50,0 100,28 100,72 50,100 0,72 0,28" fill="#FFFFFF" stroke="none" />
+                <g clip-path="url(#hexClip)" fill="none" class="logo-stroke" stroke-width="2.8" stroke-linecap="round">
+                    <polygon points="50,0 100,28 100,72 50,100 0,72 0,28" class="logo-bg" stroke="none" />
                     <path d="M15,20 L15,50 A35,35 0 0,0 50,85 L85,85" />
                     <path d="M22,20 L22,50 A28,28 0 0,0 50,78 L85,78" />
                     <path d="M29,20 L29,50 A21,21 0 0,0 50,71 L85,71" />
@@ -203,16 +263,20 @@
                     <path d="M64,80 L64,50 A14,14 0 0,0 50,36 L15,36" />
                     <path d="M57,80 L57,50 A7,7 0 0,0 50,43 L15,43" />
                 </g>
-                <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" stroke="#0F172A" stroke-width="5" stroke-linejoin="round" />
+                <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" class="logo-stroke" stroke-width="5" stroke-linejoin="round" />
               </g>
-              <text x="130" y="64" font-family="system-ui, sans-serif" font-size="36" font-weight="900" letter-spacing="4px" fill="#0F172A">NEXANODE</text>
+              <text x="130" y="64" font-family="system-ui, sans-serif" font-size="36" font-weight="900" letter-spacing="4px" class="logo-text">NEXANODE</text>
             </svg>
         </div>
-        <nav>
-            <a href="#proxy">Прокси</a>
-            <a href="#cydia">iOS & Cydia</a>
-            <a href="#firmware">Прошивки</a>
-        </nav>
+        <div class="nav-container">
+            <nav>
+                <a href="#proxy">Прокси</a>
+                <a href="#cydia">iOS & Cydia</a>
+                <a href="#firmware">Прошивки</a>
+            </nav>
+            <!-- КНОПКА-ПЕРЕКЛЮЧАТЕЛЬ -->
+            <button class="theme-toggle" id="themeBtn">Тёмная тема</button>
+        </div>
     </header>
 
     <main class="main-hero">
@@ -231,14 +295,3 @@
 
         <div class="card" id="cydia">
             <h3>iOS & Cydia</h3>
-            <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
-        </div>
-
-        <div class="card" id="firmware">
-            <h3>Кастомные Прошивки</h3>
-            <p>База чистых и кастомных прошивок для смартфонов. Инструкции по разблокировке загрузчиков (Bootloader).</p>
-        </div>
-    </section>
-
-</body>
-</html>
