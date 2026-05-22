@@ -21,8 +21,7 @@
             --svg-fill: #FFFFFF;
             --nav-color: #64748B;
             --glow-opacity: 0.6;
-            --footer-bg: #0F172A;
-            --footer-text: #94A3B8;
+            --modal-bg: rgba(255, 255, 255, 0.9);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -37,13 +36,8 @@
                 --svg-fill: #0B0F19;
                 --nav-color: #94A3B8;
                 --glow-opacity: 0.9; 
-                --footer-bg: #090D16;
-                --footer-text: #64748B;
+                --modal-bg: rgba(30, 41, 59, 0.95);
             }
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
@@ -78,17 +72,16 @@
         .logo-bg { fill: var(--svg-fill); transition: fill 0.3s; }
         .logo-text { fill: var(--svg-stroke); transition: fill 0.3s; }
 
-        nav a { color: var(--nav-color); text-decoration: none; margin-left: 25px; font-weight: 500; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; }
+        nav a { color: var(--nav-color); text-decoration: none; margin-left: 25px; font-weight: 500; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; cursor: pointer; }
         nav a:hover { color: var(--text-main); }
         nav a.creator-nav-btn { color: #818CF8; font-weight: 600; }
 
-        .main-hero { text-align: center; padding: 90px 20px 40px 20px; }
+        .main-hero { text-align: center; padding: 60px 20px 30px 20px; }
         .main-hero h1 { font-size: 3rem; font-weight: 300; color: var(--text-main); margin-bottom: 15px; }
         .main-hero p { font-size: 1.15rem; font-weight: 300; max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
         .features-grid {
             display: flex; justify-content: center; align-items: stretch; gap: 20px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; flex-wrap: wrap; 
-            flex-grow: 1; 
         }
 
         .card {
@@ -96,7 +89,6 @@
             padding: 25px; width: 280px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03); transition: transform 0.2s, box-shadow 0.2s;
             display: flex; flex-direction: column;
         }
-        
         .card.wide-card { width: 100%; max-width: 920px; }
         .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25); border-color: rgba(99, 102, 241, 0.4); }
 
@@ -120,10 +112,29 @@
         .interactive-link:hover { padding-left: 6px; }
         .link-desc { font-size: 0.8rem; color: var(--text-color); margin-top: 2px; font-weight: 300; }
 
-        footer {
-            background-color: var(--footer-bg); color: var(--footer-text); padding: 30px 20px; text-align: center; font-size: 0.85rem; font-weight: 300; border-top: 1px solid rgba(255, 255, 255, 0.05); line-height: 1.8; margin-top: 60px;
+        /* 👑 КРАСИВОЕ ВСЦПЛЫВАЮЩЕЕ ОКНО (MODAL) 👑 */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 100; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
         }
-        footer strong { color: #818CF8; font-weight: 500; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .modal-window {
+            background-color: var(--modal-bg); border: 1px solid var(--card-border);
+            padding: 40px; border-radius: 24px; width: 90%; max-width: 450px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); text-align: center;
+            position: relative; line-height: 1.8; font-weight: 300;
+        }
+        .modal-window strong { color: #818CF8; font-weight: 500; }
+        
+        .close-btn {
+            position: absolute; top: 15px; right: 20px; background: none; border: none;
+            font-size: 1.5rem; color: var(--text-color); cursor: pointer; outline: none;
+        }
+        .close-btn:hover { color: var(--text-main); }
     </style>
 </head>
 <body>
@@ -149,7 +160,8 @@
             <a href="#proxy">Прокси</a>
             <a href="#cydia">iOS & Cydia</a>
             <a href="#android">Android</a>
-            <a href="#creators" class="creator-nav-btn">Креаторы</a>
+            <!-- Ссылке добавили специальный ID для вызова окна -->
+            <a id="openModalBtn" class="creator-nav-btn">Креаторы</a>
         </nav>
     </header>
 
@@ -159,26 +171,7 @@
     </main>
 
     <section class="features-grid">
-        <!-- 1. Быстрые Прокси -->
         <div class="card" id="proxy">
             <div class="status-badge online"><span class="status-dot"></span>Работает</div>
             <h3>Быстрые Прокси</h3>
             <p>Подключай приватные MTProto-прокси для Telegram в один клик прямо с нашего сайта.</p>
-            <a href="tg://proxy?server=s013.dimasssss.space&port=443&secret=eebed92191281b6d7a676b052f2797cad9646e732d73686f702e7275" class="tg-button">Подключить прокси</a>
-        </div>
-
-        <!-- 2. iOS & Cydia -->
-        <div class="card" id="cydia">
-            <h3>iOS & Cydia</h3>
-            <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
-        </div>
-
-        <!-- 3. Прошивки Android -->
-        <div class="card" id="android">
-            <div class="status-badge"><span class="status-dot"></span>В разработке</div>
-            <h3>Прошивки Android</h3>
-            <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS). Инструкции по разблокировке загрузчиков.</p>
-        </div>
-
-        <!-- 4. Приложения Windows -->
-        <div class="card wide-card" id="windows">
