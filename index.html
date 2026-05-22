@@ -5,23 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexaNode — Прошивки, Прокси и Джейлбрейк</title>
     <style>
-        /* Чистые светлые стили сайта */
         body {
-            background-color: #F8FAFC; /* Приятный белый фон */
-            color: #334155; /* Темно-серый текст для глаз */
+            background-color: #F8FAFC; 
+            color: #334155; 
             font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 0;
         }
 
-        /* Светлая шапка сайта */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 40px;
-            background-color: #FFFFFF; /* Белоснежная шапка */
-            border-bottom: 1px solid #E2E8F0; /* Тонкая серая линия */
+            background-color: #FFFFFF; 
+            border-bottom: 1px solid #E2E8F0; 
         }
 
         .logo-box {
@@ -30,7 +28,7 @@
         }
 
         .logo-box svg {
-            height: 45px; /* Размер логотипа */
+            height: 45px; 
             display: block;
         }
 
@@ -43,18 +41,17 @@
         }
 
         nav a:hover {
-            color: #0F172A; /* Черный цвет при наведении */
+            color: #0F172A; 
         }
 
-        /* Главный блок приветствия */
         .main-hero {
             text-align: center;
-            padding: 120px 20px;
+            padding: 80px 20px 40px 20px;
         }
 
         .main-hero h1 {
             font-size: 3rem;
-            color: #0F172A; /* Глубокий черный заголовок */
+            color: #0F172A; 
             margin-bottom: 15px;
         }
 
@@ -64,30 +61,85 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
+        /* Блок с карточками разделов */
+        .features-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 30px;
+            width: 280px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            color: #0F172A;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Статус-мигалка для прокси */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #FEF3C7;
+            color: #D97706;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #D97706;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- Перекрашенный в черный цвет векторный логотип-чертеж -->
         <div class="logo-box">
             <svg viewBox="0 0 500 120">
               <g transform="translate(10, 10)">
-                <!-- Серые линии разметки -->
                 <circle cx="50" cy="50" r="48" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4 3" /> 
                 <line x1="50" y1="2" x2="50" y2="98" stroke="#94A3B8" stroke-width="1" stroke-dasharray="8 4" />
                 <line x1="2" y1="50" x2="98" y2="50" stroke="#94A3B8" stroke-width="1" stroke-dasharray="8 4" />
-                <!-- Жирный черный шестиугольник -->
                 <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="#0F172A" stroke-width="5" stroke-linejoin="round" />
-                <!-- Центральная точка -->
                 <circle cx="50" cy="50" r="5" fill="#0F172A" />
               </g>
-              <!-- Черный текст названия -->
               <text x="130" y="65" font-family="system-ui, sans-serif" font-size="38" font-weight="800" fill="#0F172A">NexaNode</text>
             </svg>
         </div>
-
-        <!-- Навигация -->
         <nav>
             <a href="#proxy">Прокси</a>
             <a href="#cydia">iOS & Cydia</a>
@@ -97,8 +149,32 @@
 
     <main class="main-hero">
         <h1>Добро пожаловать в NexaNode</h1>
-        <p>Портал о прошивках, обходе ограничений, прокси-серверах и кастомизации iOS и Android гаджетов.</p>
+        <p>Портал о прошивках, обходе ограничений, прокси-серверах и кастомизации мобильных устройств.</p>
     </main>
+
+    <!-- СЕКЦИЯ С КАРТОЧКАМИ -->
+    <section class="features-grid">
+        <!-- Карточка Прокси -->
+        <div class="card" id="proxy">
+            <div class="status-badge">
+                <span class="status-dot"></span>В разработке
+            </div>
+            <h3>Быстрые Прокси</h3>
+            <p>Готовим приватные и стабильные прокси-серверы для безопасного обхода блокировок на iOS и Android.</p>
+        </div>
+
+        <!-- Карточка iOS -->
+        <div class="card" id="cydia">
+            <h3>iOS & Cydia</h3>
+            <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
+        </div>
+
+        <!-- Карточка Прошивок -->
+        <div class="card" id="firmware">
+            <h3>Кастомные Прошивки</h3>
+            <p>База чистых и кастомных прошивок для смартфонов. Инструкции по разблокировке загрузчиков (Bootloader).</p>
+        </div>
+    </section>
 
 </body>
 </html>
