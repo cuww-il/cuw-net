@@ -75,16 +75,8 @@
         .main-hero h1 { font-size: 3rem; font-weight: 300; color: var(--text-main); margin-bottom: 15px; }
         .main-hero p { font-size: 1.15rem; font-weight: 300; max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
-        /* ИСПРАВЛЕННАЯ СЕТКА КАРТОЧЕК */
         .features-grid {
-            display: flex; 
-            justify-content: center; 
-            align-items: stretch; 
-            gap: 20px; 
-            padding: 40px 20px; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            flex-wrap: wrap; 
+            display: flex; justify-content: center; align-items: stretch; gap: 20px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; flex-wrap: wrap; 
         }
 
         .card {
@@ -93,7 +85,6 @@
             display: flex; flex-direction: column;
         }
         
-        /* Автоматическое растягивание широкой карточки на весь нижний ряд */
         .card.wide-card {
             width: 100%;
             max-width: 920px;
@@ -115,20 +106,35 @@
         }
         .tg-button:hover { background-color: #1A84B8; }
 
-        .software-table {
-            width: 100%; border-collapse: collapse; margin-top: auto;
+        /* 🔗 СТИЛИ ДЛЯ ИНТЕРАКТИВНЫХ ССЫЛОК СКАЧИВАНИЯ */
+        .links-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: auto;
+            text-align: left;
         }
-        .software-table tr { border-bottom: 1px solid var(--card-border); }
-        .software-table tr:last-child { border-bottom: none; }
-        .software-table td { padding: 12px 8px; font-size: 0.85rem; vertical-align: middle; }
-        .app-name { font-weight: 500; color: var(--text-main); }
-        .app-size { font-size: 0.75rem; color: var(--nav-color); text-align: center; }
-        
-        .btn-exe {
-            display: inline-block; background-color: #10B981; color: #FFFFFF; text-decoration: none;
-            padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; float: right; transition: background-color 0.2s;
+
+        .interactive-link {
+            color: #10B981; /* Красивый изумрудный цвет для ссылок */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s, padding-left 0.2s;
+            display: inline-block;
         }
-        .btn-exe:hover { background-color: #059669; }
+
+        .interactive-link:hover {
+            color: #059669;
+            padding-left: 6px; /* Эффект сдвига при наведении */
+        }
+
+        .link-desc {
+            font-size: 0.8rem;
+            color: var(--text-color);
+            margin-top: 2px;
+            font-weight: 300;
+        }
     </style>
 </head>
 <body>
@@ -180,10 +186,12 @@
             <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS). Инструкции по разблокировке загрузчиков.</p>
         </div>
 
-        <!-- 4. Приложения Windows (ВШИТА ВНИЗ НА ВСЮ ШИРИНУ) -->
+        <!-- 4. Приложения Windows С ИНТЕРАКТИВНЫМ МЕНЮ ССЫЛОК -->
         <div class="card wide-card" id="windows">
             <h3>Софт для Windows</h3>
             <p>Приложения без вирусов проверено на Virustotal, скачивание в один клик!</p>
             
-            <table class="software-table">
-                <tr>
+            <div class="links-menu">
+                <!-- Ссылка 1: 3uTools -->
+                <div>
+                    <a href="https://3u.com" target="_blank" class="interactive-link">➔ Скачать 3uTools (iOS Утилита)</a>
