@@ -82,34 +82,23 @@
         nav a:hover { color: var(--text-main); }
         nav a.creator-nav-btn { color: #818CF8; font-weight: 600; }
 
-        .main-hero { text-align: center; padding: 60px 20px 30px 20px; }
+        .main-hero { text-align: center; padding: 90px 20px 40px 20px; }
         .main-hero h1 { font-size: 3rem; font-weight: 300; color: var(--text-main); margin-bottom: 15px; }
         .main-hero p { font-size: 1.15rem; font-weight: 300; max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
-        /* 🛠 СУПЕР-НАДЁЖНЫЙ ВЕРТИКАЛЬНЫЙ СПИСОК 🛠 */
         .features-grid {
-            display: flex; 
-            flex-direction: column; /* Карточки строго друг за другом сверху вниз */
-            align-items: center; 
-            gap: 25px; 
-            padding: 20px; 
-            max-width: 800px; 
-            margin: 0 auto; 
+            display: flex; justify-content: center; align-items: stretch; gap: 20px; padding: 40px 20px; max-width: 1300px; margin: 0 auto; flex-wrap: wrap; 
             flex-grow: 1; 
         }
 
         .card {
             background-color: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 20px;
-            padding: 25px; 
-            width: 100%; /* Карточки растягиваются во всю ширину списка */
-            box-sizing: border-box;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03); 
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex; 
-            flex-direction: column;
+            padding: 25px; width: 260px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03); transition: transform 0.2s, box-shadow 0.2s;
+            display: flex; flex-direction: column;
         }
         
-        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25); border-color: rgba(99, 102, 241, 0.4); }
+        .card.wide-card { width: 100%; max-width: 920px; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25); border-color: rgba(99, 102, 241, 0.4); }
 
         .card h3 { font-size: 1.2rem; font-weight: 500; color: var(--text-main); margin-top: 0; margin-bottom: 12px; }
         .card p { color: var(--text-color); font-size: 0.9rem; line-height: 1.6; font-weight: 300; margin: 0; margin-bottom: 20px; }
@@ -120,12 +109,12 @@
         .status-badge.online .status-dot { background-color: #16A34A; }
 
         .tg-button {
-            display: inline-block; text-align: center; background-color: #24A1DE; color: #FFFFFF; text-decoration: none;
-            padding: 11px 25px; border-radius: 12px; font-size: 0.85rem; font-weight: 500; align-self: flex-start; transition: background-color 0.2s;
+            display: block; text-align: center; background-color: #24A1DE; color: #FFFFFF; text-decoration: none;
+            padding: 11px 15px; border-radius: 12px; font-size: 0.85rem; font-weight: 500; margin-top: auto; transition: background-color 0.2s;
         }
         .tg-button:hover { background-color: #1A84B8; }
 
-        .links-menu { display: flex; flex-direction: column; gap: 15px; text-align: left; }
+        .links-menu { display: flex; flex-direction: column; gap: 12px; margin-top: auto; text-align: left; }
         .interactive-link { color: #10B981; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s, padding-left 0.2s; display: inline-block; }
         @media (prefers-color-scheme: dark) { .interactive-link { color: #38BDF8; } }
         .interactive-link:hover { padding-left: 6px; }
@@ -149,7 +138,7 @@
                 <circle cx="50" cy="50" r="48" fill="none" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3" /> 
                 <g clip-path="url(#hexClip)" fill="none" class="logo-stroke" stroke-width="2.8" stroke-linecap="round">
                     <polygon points="50,0 100,28 100,72 50,100 0,72 0,28" class="logo-bg" stroke="none" />
-                    <path d="M15,20 L15,50 A35,35 0 0,0 50,85 L85,85" /><path d="M22,20 L22,50 A28,28 0 0,0 50,78 L85,78" /><path d="M29,20 L29,50 A21,21 0 0,0 50,71 L85,71" /><path d="M36,20 L36,50 A14,14 0 0,0 50,64 L85,64" /><path d="M43,20 L43,50 A7,7 0 0,0 50,57 L85,57" /><path d="M85,80 L85,50 A35,35 0 0,0 50,15 L15,15" /><path d="M78,80 L78,50 A28,28 0 0,0 50,22 L15,22" /><path d="M71,80 L71,50 A21,21 0 0,0 50,29 L15,29" /><img src="" /><path d="M64,80 L64,50 A14,14 0 0,0 50,36 L15,36" /><path d="M57,80 L57,50 A7,7 0 0,0 50,43 L15,43" />
+                    <path d="M15,20 L15,50 A35,35 0 0,0 50,85 L85,85" /><path d="M22,20 L22,50 A28,28 0 0,0 50,78 L85,78" /><path d="M29,20 L29,50 A21,21 0 0,0 50,71 L85,71" /><path d="M36,20 L36,50 A14,14 0 0,0 50,64 L85,64" /><path d="M43,20 L43,50 A7,7 0 0,0 50,57 L85,57" /><path d="M85,80 L85,50 A35,35 0 0,0 50,15 L15,15" /><path d="M78,80 L78,50 A28,28 0 0,0 50,22 L15,22" /><path d="M71,80 L71,50 A21,21 0 0,0 50,29 L15,29" /><path d="M64,80 L64,50 A14,14 0 0,0 50,36 L15,36" /><path d="M57,80 L57,50 A7,7 0 0,0 50,43 L15,43" />
                 </g>
                 <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" class="logo-stroke" stroke-width="5" stroke-linejoin="round" />
               </g>
@@ -188,3 +177,8 @@
         <div class="card" id="android">
             <div class="status-badge"><span class="status-dot"></span>В разработке</div>
             <h3>Прошивки Android</h3>
+            <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS). Инструкции по разблокировке загрузчиков.</p>
+        </div>
+
+        <!-- 4. Приложения Windows -->
+        <div class="card wide-card" id="windows">
