@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexaNode — Прошивки, Прокси и Джейлбрейк</title>
     <style>
-        /* Стильное хакерское оформление сайта */
+        /* Чистые светлые стили сайта */
         body {
-            background-color: #0B0F19; /* Глубокий темный фон */
-            color: #E2E8F0;
+            background-color: #F8FAFC; /* Приятный белый фон */
+            color: #334155; /* Темно-серый текст для глаз */
             font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 0;
         }
 
-        /* Шапка сайта с логотипом */
+        /* Светлая шапка сайта */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 40px;
-            background-color: #0F172A;
-            border-bottom: 1px solid #1E293B;
+            background-color: #FFFFFF; /* Белоснежная шапка */
+            border-bottom: 1px solid #E2E8F0; /* Тонкая серая линия */
         }
 
         .logo-box {
@@ -29,13 +29,13 @@
             align-items: center;
         }
 
-        .logo-box img {
-            height: 45px; /* Идеальный размер для твоего логотипа */
+        .logo-box svg {
+            height: 45px; /* Размер логотипа */
             display: block;
         }
 
         nav a {
-            color: #94A3B8;
+            color: #64748B;
             text-decoration: none;
             margin-left: 25px;
             font-weight: 500;
@@ -43,7 +43,7 @@
         }
 
         nav a:hover {
-            color: #FFFFFF; /* Белый цвет при наведении */
+            color: #0F172A; /* Черный цвет при наведении */
         }
 
         /* Главный блок приветствия */
@@ -54,13 +54,13 @@
 
         .main-hero h1 {
             font-size: 3rem;
-            color: #FFFFFF;
+            color: #0F172A; /* Глубокий черный заголовок */
             margin-bottom: 15px;
         }
 
         .main-hero p {
             font-size: 1.2rem;
-            color: #94A3B8;
+            color: #64748B;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -69,12 +69,25 @@
 <body>
 
     <header>
-        <!-- Твой собственный логотип с GitHub -->
+        <!-- Перекрашенный в черный цвет векторный логотип-чертеж -->
         <div class="logo-box">
-            <img src="logo.svg" alt="NexaNode Logo">
+            <svg viewBox="0 0 500 120">
+              <g transform="translate(10, 10)">
+                <!-- Серые линии разметки -->
+                <circle cx="50" cy="50" r="48" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4 3" /> 
+                <line x1="50" y1="2" x2="50" y2="98" stroke="#94A3B8" stroke-width="1" stroke-dasharray="8 4" />
+                <line x1="2" y1="50" x2="98" y2="50" stroke="#94A3B8" stroke-width="1" stroke-dasharray="8 4" />
+                <!-- Жирный черный шестиугольник -->
+                <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="#0F172A" stroke-width="5" stroke-linejoin="round" />
+                <!-- Центральная точка -->
+                <circle cx="50" cy="50" r="5" fill="#0F172A" />
+              </g>
+              <!-- Черный текст названия -->
+              <text x="130" y="65" font-family="system-ui, sans-serif" font-size="38" font-weight="800" fill="#0F172A">NexaNode</text>
+            </svg>
         </div>
 
-        <!-- Навигация по разделам -->
+        <!-- Навигация -->
         <nav>
             <a href="#proxy">Прокси</a>
             <a href="#cydia">iOS & Cydia</a>
