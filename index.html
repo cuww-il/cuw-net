@@ -42,6 +42,11 @@
             }
         }
 
+        /* Плавная прокрутка при нажатии на ссылки меню */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg-color); 
             color: var(--text-color); 
@@ -53,7 +58,7 @@
             overflow-x: hidden;
             min-height: 100vh;
             display: flex;
-            flex-direction: column; /* Заставляет подвал прижиматься к низу */
+            flex-direction: column; 
             transition: background-color 0.3s, color 0.3s; 
         }
 
@@ -76,6 +81,12 @@
 
         nav a { color: var(--nav-color); text-decoration: none; margin-left: 25px; font-weight: 500; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; }
         nav a:hover { color: var(--text-main); }
+        
+        /* Особый стиль для кнопки Креаторы в меню */
+        nav a.creator-nav-btn {
+            color: #818CF8;
+            font-weight: 600;
+        }
 
         .main-hero { text-align: center; padding: 90px 20px 40px 20px; }
         .main-hero h1 { font-size: 3rem; font-weight: 300; color: var(--text-main); margin-bottom: 15px; }
@@ -83,7 +94,7 @@
 
         .features-grid {
             display: flex; justify-content: center; align-items: stretch; gap: 20px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; flex-wrap: wrap; 
-            flex-grow: 1; /* Толкает футер вниз, если карточек мало */
+            flex-grow: 1; 
         }
 
         .card {
@@ -115,7 +126,7 @@
         .interactive-link:hover { padding-left: 6px; }
         .link-desc { font-size: 0.8rem; color: var(--text-color); margin-top: 2px; font-weight: 300; }
 
-        /* 👑 КРАСИВЫЙ СТИЛЬНЫЙ ПОДВАЛ (КРЕДИТЫ / КРЕАТОРЫ) 👑 */
+        /* ПОДВАЛ */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
@@ -129,7 +140,7 @@
         }
 
         footer strong {
-            color: #818CF8; /* Подсветка имен креаторов */
+            color: #818CF8; 
             font-weight: 500;
         }
     </style>
@@ -153,7 +164,13 @@
               <text x="130" y="64" font-family="'Montserrat', sans-serif" font-size="36" font-weight="400" letter-spacing="4px" class="logo-text">NEXANODE</text>
             </svg>
         </div>
-        <nav><a href="#proxy">Прокси</a><a href="#cydia">iOS & Cydia</a><a href="#android">Android</a></nav>
+        <!-- ДОБАВИЛИ КНОПКУ ССЫЛКУ НА КРЕАТОРОВ В МЕНЮ -->
+        <nav>
+            <a href="#proxy">Прокси</a>
+            <a href="#cydia">iOS & Cydia</a>
+            <a href="#android">Android</a>
+            <a href="#creators" class="creator-nav-btn">Креаторы</a>
+        </nav>
     </header>
 
     <main class="main-hero">
@@ -178,9 +195,3 @@
 
         <!-- 3. Прошивки Android -->
         <div class="card" id="android">
-            <div class="status-badge"><span class="status-dot"></span>В разработке</div>
-            <h3>Прошивки Android</h3>
-            <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS). Инструкции по разблокировке загрузчиков.</p>
-        </div>
-
-        <!-- 4. Приложения Windows -->
