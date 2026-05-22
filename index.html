@@ -27,8 +27,9 @@
             align-items: center;
         }
 
+        /* Адаптивный размер космического логотипа */
         .logo-box svg {
-            height: 45px; 
+            height: 40px; 
             display: block;
         }
 
@@ -36,7 +37,10 @@
             color: #64748B;
             text-decoration: none;
             margin-left: 25px;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
             transition: color 0.2s;
         }
 
@@ -62,7 +66,6 @@
             margin: 0 auto;
         }
 
-        /* Блок с карточками разделов */
         .features-grid {
             display: flex;
             justify-content: center;
@@ -101,7 +104,6 @@
             line-height: 1.5;
         }
 
-        /* Статус-мигалка для прокси */
         .status-badge {
             display: inline-flex;
             align-items: center;
@@ -129,15 +131,38 @@
 
     <header>
         <div class="logo-box">
-            <svg viewBox="0 0 500 120">
+            <!-- НОВЫЙ СКЕЙЛАБЕЛЬНЫЙ SVG ЛОГОТИП В СТИЛЕ SPACEX / TESLA -->
+            <svg viewBox="0 0 650 120" xmlns="http://w3.org">
+              <!-- Иконка-Шестиугольник -->
               <g transform="translate(10, 10)">
-                <circle cx="50" cy="50" r="48" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4 3" /> 
+                <circle cx="50" cy="50" r="48" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4 3" /> 
                 <line x1="50" y1="2" x2="50" y2="98" stroke="#94A3B8" stroke-width="1" stroke-dasharray="8 4" />
                 <line x1="2" y1="50" x2="98" y2="50" stroke="#94A3B8" stroke-width="1" stroke-dasharray="8 4" />
-                <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="#0F172A" stroke-width="5" stroke-linejoin="round" />
+                <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="#0F172A" stroke-width="6" stroke-linejoin="round" />
                 <circle cx="50" cy="50" r="5" fill="#0F172A" />
               </g>
-              <text x="130" y="65" font-family="system-ui, sans-serif" font-size="38" font-weight="800" fill="#0F172A">NexaNode</text>
+
+              <!-- ТЕКСТА НЕТ, ЗДЕСЬ ИДУТ СТИЛИЗОВАННЫЕ ВЕКТОРНЫЕ ЛИНИИ БУКВ -->
+              <g fill="#0F172A" transform="translate(140, 33)">
+                <!-- N -->
+                <path d="M0,53 L0,0 L14,0 L35,33 L35,0 L48,0 L48,53 L34,53 L13,20 L13,53 Z" />
+                <!-- E (в стиле Tesla, без центральной полки) -->
+                <path d="M63,0 L103,0 L103,11 L76,11 L76,21 L98,21 L98,31 L76,31 L76,42 L104,42 L104,53 L63,53 Z" />
+                <!-- X (космические скосы) -->
+                <path d="M115,0 L131,0 L149,24 L167,0 L183,0 L158,32 L185,53 L169,53 L149,36 L129,53 L113,53 L139,32 Z" />
+                <!-- A (соединенная полка снизу) -->
+                <path d="M192,53 L212,0 L227,0 L247,53 L233,53 L220,16 L206,16 L193,53 Z" />
+                
+                <!-- ВТОРОЕ СЛОВО (NODE) НАЧИНАЕТСЯ СРАЗУ СЛИ ТНО С «A» -->
+                <!-- N -->
+                <path d="M247,53 L247,0 L261,0 L282,33 L282,0 L295,0 L295,53 L281,53 L260,20 L260,53 Z" />
+                <!-- O (аэрокосмический скругленный квадрат) -->
+                <path d="M310,0 L345,0 C357,0 365,8 365,20 L365,33 C365,45 357,53 345,53 L310,53 C298,53 290,45 290,33 L290,20 C290,8 298,0 310,0 Z M310,11 L310,42 L345,42 L345,11 Z" />
+                <!-- D (рубленый) -->
+                <path d="M377,0 L408,0 C425,0 435,10 435,26 L435,27 C435,43 425,53 408,53 L377,53 Z M390,11 L390,42 L407,42 C416,42 422,37 422,27 L422,26 C422,16 416,11 407,11 Z" />
+                <!-- E -->
+                <path d="M448,0 L488,0 L488,11 L461,11 L461,21 L483,21 L483,31 L461,31 L461,42 L489,42 L489,53 L448,53 Z" />
+              </g>
             </svg>
         </div>
         <nav>
@@ -152,9 +177,7 @@
         <p>Портал о прошивках, обходе ограничений, прокси-серверах и кастомизации мобильных устройств.</p>
     </main>
 
-    <!-- СЕКЦИЯ С КАРТОЧКАМИ -->
     <section class="features-grid">
-        <!-- Карточка Прокси -->
         <div class="card" id="proxy">
             <div class="status-badge">
                 <span class="status-dot"></span>В разработке
@@ -163,13 +186,11 @@
             <p>Готовим приватные и стабильные прокси-серверы для безопасного обхода блокировок на iOS и Android.</p>
         </div>
 
-        <!-- Карточка iOS -->
         <div class="card" id="cydia">
             <h3>iOS & Cydia</h3>
             <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
         </div>
 
-        <!-- Карточка Прошивок -->
         <div class="card" id="firmware">
             <h3>Кастомные Прошивки</h3>
             <p>База чистых и кастомных прошивок для смартфонов. Инструкции по разблокировке загрузчиков (Bootloader).</p>
