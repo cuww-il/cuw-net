@@ -94,46 +94,38 @@
         .status-badge.online { background-color: #DCFCE7; color: #16A34A; }
         .status-badge.online .status-dot { background-color: #16A34A; }
 
-        .tg-button {
+        .tg-button, .download-btn {
             display: block; text-align: center; background-color: #24A1DE; color: #FFFFFF; text-decoration: none;
             padding: 11px 15px; border-radius: 12px; font-size: 0.85rem; font-weight: 500; margin-top: auto; transition: background-color 0.2s;
         }
         .tg-button:hover { background-color: #1A84B8; }
 
-        /* СТИЛЬНЫЕ МИНИ-КНОПКИ ДЛЯ СКАЧИВАНИЯ ПРОГРАММ */
-        .download-list {
+        /* СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ СКАЧИВАНИЯ */
+        .download-menu-container {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: auto; /* Прижимает весь список к низу карточки */
+            gap: 12px;
+            margin-top: auto;
         }
 
-        .btn-download {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(15, 23, 42, 0.05);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 10px 14px;
+        .app-select {
+            width: 100%;
+            padding: 10px;
             border-radius: 10px;
+            border: 1px solid var(--card-border);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        [data-theme="dark"] .btn-download { background-color: rgba(255, 255, 255, 0.05); }
-
-        .btn-download:hover {
-            background-color: var(--text-main);
-            color: var(--bg-color);
-            transform: translateX(3px); /* Легкий сдвиг вправо при наведении */
+            outline: none;
+            cursor: pointer;
         }
 
-        .btn-size {
-            font-size: 0.75rem;
-            color: var(--nav-color);
-            font-weight: 400;
+        .download-btn {
+            background-color: #10B981; /* Приятный зеленый цвет для скачивания */
+        }
+        .download-btn:hover {
+            background-color: #059669;
         }
     </style>
 </head>
@@ -186,9 +178,13 @@
             <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS). Инструкции по разблокировке загрузчиков (Bootloader).</p>
         </div>
 
-        <!-- 4. Приложения Windows С НАСТОЯЩИМИ КНОПКАМИ СКАЧИВАНИЯ -->
+        <!-- 4. Приложения Windows С ИНТЕРАКТИВНЫМ МЕНЮ -->
         <div class="card" id="windows">
             <h3>Софт для Windows</h3>
-            <p>Безопасные утилиты в один клик. Проверено через VirusTotal, без скрытых вирусов и майнеров.</p>
+            <p>Приложения без вирусов проверено на Virustotal, скачивание в один клик через меню выбора.</p>
             
-            <div class="download-list">
+            <div class="download-menu-container">
+                <!-- Само меню выбора программ -->
+                <select id="appSelector" class="app-select">
+                    <!-- Заменяй ссылки во value=" ССЫЛКА " на свои .exe файлы, когда загрузишь их в гитхаб -->
+                    <option value="https://3u.com">📦 3uTools (iOS) — 180 MB</option>
