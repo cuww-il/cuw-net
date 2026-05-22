@@ -7,34 +7,32 @@
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --bg-color: #F1F5F9;
             --text-color: #475569;
             --text-main: #0F172A;
-            --header-bg: rgba(255, 255, 255, 0.75);
-            --card-bg: rgba(255, 255, 255, 0.75);
-            --card-border: rgba(226, 232, 240, 0.8);
+            --header-bg: rgba(255, 255, 255, 0.7);
+            --card-bg: rgba(255, 255, 255, 0.65);
             --svg-stroke: #0F172A;
             --svg-fill: #FFFFFF;
             --nav-color: #64748B;
-            --glow-opacity: 0.6;
+            --glow-opacity: 0.7;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-color: #0B0F19; 
+                --bg-color: #060814; 
                 --text-color: #94A3B8;
                 --text-main: #F8FAFC;
-                --header-bg: rgba(15, 23, 42, 0.75);
-                --card-bg: rgba(30, 41, 59, 0.7);
-                --card-border: rgba(255, 255, 255, 0.05);
+                --header-bg: rgba(15, 23, 42, 0.7);
+                --card-bg: rgba(15, 23, 42, 0.65);
                 --svg-stroke: #F8FAFC;
-                --svg-fill: #0B0F19;
+                --svg-fill: #060814;
                 --nav-color: #94A3B8;
-                --glow-opacity: 0.9; 
+                --glow-opacity: 0.95; 
             }
         }
 
@@ -51,15 +49,17 @@
             transition: background-color 0.3s, color 0.3s; 
         }
 
-        .glow-1, .glow-2 {
-            position: absolute; border-radius: 50%; pointer-events: none; z-index: -1; filter: blur(90px); opacity: var(--glow-opacity); transition: opacity 0.3s;
+        /* СОЧНЫЕ НЕОНОВЫЕ БЛИКИ ДЛЯ КИБЕР-ЛЕТА */
+        .glow-1, .glow-2, .glow-3 {
+            position: absolute; border-radius: 50%; pointer-events: none; z-index: -1; filter: blur(100px); opacity: var(--glow-opacity); transition: opacity 0.3s;
         }
-        .glow-1 { background: radial-gradient(circle, #818CF8 0%, #6366F1 50%, rgba(255,255,255,0) 100%); width: 600px; height: 600px; top: -200px; left: -150px; }
-        .glow-2 { background: radial-gradient(circle, #38BDF8 0%, #0EA5E9 50%, rgba(255,255,255,0) 100%); width: 600px; height: 600px; top: 150px; right: -150px; }
+        .glow-1 { background: radial-gradient(circle, #ff007f 0%, #7000ff 50%, rgba(255,255,255,0) 100%); width: 650px; height: 650px; top: -200px; left: -150px; }
+        .glow-2 { background: radial-gradient(circle, #00f0ff 0%, #3b82f6 50%, rgba(255,255,255,0) 100%); width: 650px; height: 650px; top: 200px; right: -150px; }
+        .glow-3 { background: radial-gradient(circle, #ff007f 0%, rgba(255,255,255,0) 100%); width: 400px; height: 400px; bottom: -100px; left: 30%; }
 
         header {
             display: flex; justify-content: space-between; align-items: center; padding: 10px 40px;
-            background-color: var(--header-bg); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(226, 232, 240, 0.2); 
+            background-color: var(--header-bg); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
             position: sticky; top: 0; z-index: 10; transition: background-color 0.3s;
         }
 
@@ -68,37 +68,62 @@
         .logo-bg { fill: var(--svg-fill); transition: fill 0.3s; }
         .logo-text { fill: var(--svg-stroke); transition: fill 0.3s; }
 
-        nav a { color: var(--nav-color); text-decoration: none; margin-left: 25px; font-weight: 500; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; }
+        nav a { color: var(--nav-color); text-decoration: none; margin-left: 25px; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; }
         nav a:hover { color: var(--text-main); }
 
-        .main-hero { text-align: center; padding: 90px 20px 40px 20px; }
+        .main-hero { text-align: center; padding: 70px 20px 20px 20px; }
         .main-hero h1 { font-size: 3rem; font-weight: 300; color: var(--text-main); margin-bottom: 15px; }
         .main-hero p { font-size: 1.15rem; font-weight: 300; max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
+        /* БЛОК ОБНОВЛЕНИЯ 1 ИЮНЯ */
+        .update-banner {
+            max-width: 880px;
+            margin: 20px auto;
+            padding: 15px 25px;
+            background: linear-gradient(90deg, rgba(255, 0, 127, 0.1) 0%, rgba(112, 0, 255, 0.1) 100%);
+            border: 1px dashed #ff007f;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .update-banner h4 { margin: 0 0 5px 0; color: #ff007f; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; }
+        .update-banner p { margin: 0; font-size: 0.95rem; font-weight: 300; color: var(--text-main); }
+
         .features-grid {
-            display: flex; justify-content: center; align-items: stretch; gap: 20px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; flex-wrap: wrap; 
+            display: flex; justify-content: center; align-items: stretch; gap: 24px; padding: 30px 20px; max-width: 1000px; margin: 0 auto; flex-wrap: wrap; 
         }
 
+        /* ✨ ЭФФЕКТ LIQUID GLASS (ЖИДКОЕ СТЕКЛО) ✨ */
         .card {
-            background-color: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 20px;
-            padding: 25px; width: 280px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03); transition: transform 0.2s, box-shadow 0.2s;
-            display: flex; flex-direction: column;
+            background-color: var(--card-bg); 
+            backdrop-filter: blur(16px) saturate(120%); 
+            /* Жидкий разноцветный полупрозрачный бордюр */
+            border: 2px solid transparent;
+            border-image: linear-gradient(135deg, #ff007f, #7000ff, #00f0ff) 1;
+            border-radius: 1px; /* Специфика border-image ломает скругление, убираем его для стиля жидкого кристалла */
+            padding: 25px; 
+            width: 280px; 
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1); 
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; 
+            flex-direction: column;
+            position: relative;
         }
         
-        .card.wide-card {
-            width: 100%;
-            max-width: 920px;
-        }
+        .card.wide-card { width: 100%; max-width: 920px; }
 
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25); border-color: rgba(99, 102, 241, 0.4); }
+        .card:hover { 
+            transform: translateY(-8px) scale(1.01); 
+            box-shadow: 0 30px 50px -10px rgba(255, 0, 127, 0.2); 
+        }
 
         .card h3 { font-size: 1.2rem; font-weight: 500; color: var(--text-main); margin-top: 0; margin-bottom: 12px; }
         .card p { color: var(--text-color); font-size: 0.9rem; line-height: 1.6; font-weight: 300; margin: 0; margin-bottom: 20px; }
 
-        .status-badge { display: inline-flex; align-items: center; background-color: #FEF3C7; color: #D97706; font-size: 0.65rem; font-weight: 500; padding: 4px 10px; border-radius: 20px; margin-bottom: 15px; text-transform: uppercase; align-self: flex-start; }
-        .status-dot { width: 6px; height: 6px; background-color: #D97706; border-radius: 50%; margin-right: 6px; }
-        .status-badge.online { background-color: #DCFCE7; color: #16A34A; }
-        .status-badge.online .status-dot { background-color: #16A34A; }
+        /* ЯРКАЯ ЛЕТНЯЯ ПЛАШКА */
+        .status-badge { display: inline-flex; align-items: center; background: linear-gradient(90deg, #ff7b00, #ff007f); color: #FFFFFF; font-size: 0.65rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; align-self: flex-start; box-shadow: 0 4px 10px rgba(255, 0, 127, 0.3); }
+        .status-dot { width: 6px; height: 6px; background-color: #FFFFFF; border-radius: 50%; margin-right: 6px; animate: blink 1s infinite; }
+        .status-badge.online { background: #16A34A; box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3); }
 
         .tg-button {
             display: block; text-align: center; background-color: #24A1DE; color: #FFFFFF; text-decoration: none;
@@ -106,40 +131,16 @@
         }
         .tg-button:hover { background-color: #1A84B8; }
 
-        /* 🔗 СТИЛИ ДЛЯ ИНТЕРАКТИВНЫХ ССЫЛОК СКАЧИВАНИЯ */
-        .links-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: auto;
-            text-align: left;
-        }
-
-        .interactive-link {
-            color: #10B981; /* Красивый изумрудный цвет для ссылок */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s, padding-left 0.2s;
-            display: inline-block;
-        }
-
-        .interactive-link:hover {
-            color: #059669;
-            padding-left: 6px; /* Эффект сдвига при наведении */
-        }
-
-        .link-desc {
-            font-size: 0.8rem;
-            color: var(--text-color);
-            margin-top: 2px;
-            font-weight: 300;
-        }
+        .links-menu { display: flex; flex-direction: column; gap: 12px; margin-top: auto; text-align: left; }
+        .interactive-link { color: #00f0ff; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s, padding-left 0.2s; display: inline-block; }
+        [data-theme="light"] .interactive-link { color: #7000ff; }
+        .interactive-link:hover { padding-left: 6px; }
+        .link-desc { font-size: 0.8rem; color: var(--text-color); margin-top: 2px; font-weight: 300; }
     </style>
 </head>
 <body>
 
-    <div class="glow-1"></div><div class="glow-2"></div>
+    <div class="glow-1"></div><div class="glow-2"></div><div class="glow-3"></div>
 
     <header>
         <div class="logo-box">
@@ -164,34 +165,15 @@
         <p>Портал о прошивках, обходе ограничений, прокси-серверах и кастомизации мобильных устройств.</p>
     </main>
 
+    <!-- ПРАЗДНИЧНЫЙ БАННЕР ОБНОВЛЕНИЯ -->
+    <div class="update-banner">
+        <h4>⚡ Летнее обновление — 1 июня</h4>
+        <p>Запуск праздничного ивента! Мы обновили дизайн сайта до стиля Liquid Glass и готовим крупный завоз прокси.</p>
+    </div>
+
     <section class="features-grid">
         <!-- 1. Быстрые Прокси -->
         <div class="card" id="proxy">
             <div class="status-badge online"><span class="status-dot"></span>Работает</div>
             <h3>Быстрые Прокси</h3>
             <p>Подключай приватные MTProto-прокси для Telegram в один клик прямо с нашего сайта.</p>
-            <a href="tg://proxy?server=s013.dimasssss.space&port=443&secret=eebed92191281b6d7a676b052f2797cad9646e732d73686f702e7275" class="tg-button">Подключить прокси</a>
-        </div>
-
-        <!-- 2. iOS & Cydia -->
-        <div class="card" id="cydia">
-            <h3>iOS & Cydia</h3>
-            <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
-        </div>
-
-        <!-- 3. Прошивки Android -->
-        <div class="card" id="android">
-            <div class="status-badge"><span class="status-dot"></span>В разработке</div>
-            <h3>Прошивки Android</h3>
-            <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS). Инструкции по разблокировке загрузчиков.</p>
-        </div>
-
-        <!-- 4. Приложения Windows С ИНТЕРАКТИВНЫМ МЕНЮ ССЫЛОК -->
-        <div class="card wide-card" id="windows">
-            <h3>Софт для Windows</h3>
-            <p>Приложения без вирусов проверено на Virustotal, скачивание в один клик!</p>
-            
-            <div class="links-menu">
-                <!-- Ссылка 1: 3uTools -->
-                <div>
-                    <a href="https://3u.com" target="_blank" class="interactive-link">➔ Скачать 3uTools (iOS Утилита)</a>
