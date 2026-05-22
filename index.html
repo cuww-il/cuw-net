@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -84,6 +84,16 @@
             padding: 25px; width: 260px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03); transition: transform 0.2s, box-shadow 0.2s;
             display: flex; flex-direction: column;
         }
+        
+        /* Четвертая карточка Windows теперь будет широкой, чтобы таблица программ смотрелась идеально */
+        .card.wide-card {
+            width: 560px;
+        }
+
+        @media (max-width: 600px) {
+            .card.wide-card { width: 100%; }
+        }
+
         .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25); border-color: rgba(99, 102, 241, 0.4); }
 
         .card h3 { font-size: 1.2rem; font-weight: 500; color: var(--text-main); margin-top: 0; margin-bottom: 12px; }
@@ -94,38 +104,60 @@
         .status-badge.online { background-color: #DCFCE7; color: #16A34A; }
         .status-badge.online .status-dot { background-color: #16A34A; }
 
-        .tg-button, .download-btn {
+        .tg-button {
             display: block; text-align: center; background-color: #24A1DE; color: #FFFFFF; text-decoration: none;
             padding: 11px 15px; border-radius: 12px; font-size: 0.85rem; font-weight: 500; margin-top: auto; transition: background-color 0.2s;
         }
         .tg-button:hover { background-color: #1A84B8; }
 
-        /* СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ СКАЧИВАНИЯ */
-        .download-menu-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        /* 📊 СТИЛИ ДЛЯ КРАСИВОЙ ТАБЛИЦЫ СКАЧИВАНИЯ СОФТА */
+        .software-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: auto;
         }
 
-        .app-select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid var(--card-border);
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            outline: none;
-            cursor: pointer;
+        .software-table tr {
+            border-bottom: 1px solid var(--card-border);
         }
 
-        .download-btn {
-            background-color: #10B981; /* Приятный зеленый цвет для скачивания */
+        .software-table tr:last-child {
+            border-bottom: none;
         }
-        .download-btn:hover {
+
+        .software-table td {
+            padding: 12px 8px;
+            font-size: 0.85rem;
+            vertical-align: middle;
+        }
+
+        .app-name {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .app-size {
+            font-size: 0.75rem;
+            color: var(--nav-color);
+            text-align: center;
+        }
+
+        .btn-exe {
+            display: inline-block;
+            background-color: #10B981; /* Зелёный */
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            float: right;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-exe:hover {
             background-color: #059669;
+            transform: scale(1.03);
         }
     </style>
 </head>
@@ -175,16 +207,6 @@
         <div class="card" id="android">
             <div class="status-badge"><span class="status-dot"></span>В разработке</div>
             <h3>Прошивки Android</h3>
-            <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS). Инструкции по разблокировке загрузчиков (Bootloader).</p>
+            <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS).</p>
         </div>
 
-        <!-- 4. Приложения Windows С ИНТЕРАКТИВНЫМ МЕНЮ -->
-        <div class="card" id="windows">
-            <h3>Софт для Windows</h3>
-            <p>Приложения без вирусов проверено на Virustotal, скачивание в один клик через меню выбора.</p>
-            
-            <div class="download-menu-container">
-                <!-- Само меню выбора программ -->
-                <select id="appSelector" class="app-select">
-                    <!-- Заменяй ссылки во value=" ССЫЛКА " на свои .exe файлы, когда загрузишь их в гитхаб -->
-                    <option value="https://3u.com">📦 3uTools (iOS) — 180 MB</option>
