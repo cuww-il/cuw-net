@@ -6,23 +6,23 @@
     <title>NexaNode — Прошивки, Прокси и Джейлбрейк</title>
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     
-    <!-- ПОДКЛЮЧАЕМ КРУТОЙ ИТ-ШРИФТ MONTSERRAT -->
+    <!-- ПОДКЛЮЧАЕМ ТОНКИЕ НАЧЕРТАНИЯ ШРИФТА MONTSERRAT -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 
     <style>
         /* ☀️ ЦВЕТА ДЛЯ СВЕТЛОЙ ТЕМЫ */
         :root {
             --bg-color: #F1F5F9;
-            --text-color: #334155;
+            --text-color: #475569;
             --text-main: #0F172A;
             --header-bg: rgba(255, 255, 255, 0.75);
             --card-bg: rgba(255, 255, 255, 0.75);
             --card-border: rgba(226, 232, 240, 0.8);
             --svg-stroke: #0F172A;
             --svg-fill: #FFFFFF;
-            --nav-color: #475569;
+            --nav-color: #64748B;
             --glow-opacity: 0.6;
         }
 
@@ -45,7 +45,9 @@
         body {
             background-color: var(--bg-color); 
             color: var(--text-color); 
+            /* Задали тонкий базовый вес */
             font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+            font-weight: 400;
             margin: 0;
             padding: 0;
             position: relative;
@@ -122,7 +124,7 @@
             color: var(--nav-color);
             text-decoration: none;
             margin-left: 25px;
-            font-weight: 700;
+            font-weight: 500; /* Более тонкие ссылки меню */
             text-transform: uppercase;
             font-size: 0.8rem;
             letter-spacing: 1.5px;
@@ -140,16 +142,16 @@
 
         .main-hero h1 {
             font-size: 3rem;
-            font-weight: 900;
+            font-weight: 300; /* УЛЬТРА-ТОНКИЙ ЗАГОЛОВОК */
             color: var(--text-main); 
             margin-bottom: 15px;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
             transition: color 0.3s;
         }
 
         .main-hero p {
             font-size: 1.15rem;
-            font-weight: 500;
+            font-weight: 300; /* ТОНКИЙ ТЕКСТ ПОДЗАГОЛОВКА */
             color: var(--text-color);
             max-width: 600px;
             margin: 0 auto;
@@ -175,7 +177,7 @@
             padding: 30px;
             width: 280px;
             min-height: 200px;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03);
             transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
         }
 
@@ -187,7 +189,7 @@
 
         .card h3 {
             font-size: 1.35rem;
-            font-weight: 700;
+            font-weight: 500; /* Аккуратные заголовки карточек */
             color: var(--text-main);
             margin-top: 0;
             margin-bottom: 12px;
@@ -198,7 +200,7 @@
             color: var(--text-color);
             font-size: 0.95rem;
             line-height: 1.6;
-            font-weight: 500;
+            font-weight: 300; /* Тонкое описание внутри карточек */
             transition: color 0.3s;
         }
 
@@ -208,8 +210,8 @@
             align-items: center;
             background-color: #FEF3C7;
             color: #D97706;
-            font-size: 0.7rem;
-            font-weight: 700;
+            font-size: 0.65rem;
+            font-weight: 500;
             padding: 4px 10px;
             border-radius: 20px;
             margin-bottom: 15px;
@@ -255,7 +257,8 @@
                 </g>
                 <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" class="logo-stroke" stroke-width="5" stroke-linejoin="round" />
               </g>
-              <text x="130" y="64" font-family="'Montserrat', sans-serif" font-size="36" font-weight="900" letter-spacing="4px" class="logo-text">NEXANODE</text>
+              <!-- ТОНКИЙ И ЭЛЕГАНТНЫЙ ТЕКСТ ЛОГОТИПА -->
+              <text x="130" y="64" font-family="'Montserrat', sans-serif" font-size="36" font-weight="400" letter-spacing="4px" class="logo-text">NEXANODE</text>
             </svg>
         </div>
         <nav>
@@ -271,7 +274,6 @@
     </main>
 
     <section class="features-grid">
-        <!-- 1. Прокси -->
         <div class="card" id="proxy">
             <div class="status-badge">
                 <span class="status-dot"></span>В разработке
@@ -280,15 +282,9 @@
             <p>Готовим приватные и стабильные прокси-серверы для безопасного обхода блокировок на iOS и Android.</p>
         </div>
 
-        <!-- 2. iOS & Cydia -->
         <div class="card" id="cydia">
             <h3>iOS & Cydia</h3>
             <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
         </div>
 
-        <!-- 3. Прошивки Android с плашкой В РАЗРАБОТКЕ -->
         <div class="card" id="android">
-            <div class="status-badge">
-                <span class="status-dot"></span>В разработке
-            </div>
-            <h3>Прошивки Android</h3>
