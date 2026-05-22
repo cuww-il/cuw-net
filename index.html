@@ -75,23 +75,28 @@
         .main-hero h1 { font-size: 3rem; font-weight: 300; color: var(--text-main); margin-bottom: 15px; }
         .main-hero p { font-size: 1.15rem; font-weight: 300; max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
+        /* ИСПРАВЛЕННАЯ СЕТКА КАРТОЧЕК */
         .features-grid {
-            display: flex; justify-content: center; align-items: stretch; gap: 20px; padding: 40px 20px; max-width: 1300px; margin: 0 auto; flex-wrap: wrap; 
+            display: flex; 
+            justify-content: center; 
+            align-items: stretch; 
+            gap: 20px; 
+            padding: 40px 20px; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            flex-wrap: wrap; 
         }
 
         .card {
             background-color: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 20px;
-            padding: 25px; width: 260px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03); transition: transform 0.2s, box-shadow 0.2s;
+            padding: 25px; width: 280px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03); transition: transform 0.2s, box-shadow 0.2s;
             display: flex; flex-direction: column;
         }
         
-        /* Четвертая карточка Windows теперь будет широкой, чтобы таблица программ смотрелась идеально */
+        /* Автоматическое растягивание широкой карточки на весь нижний ряд */
         .card.wide-card {
-            width: 560px;
-        }
-
-        @media (max-width: 600px) {
-            .card.wide-card { width: 100%; }
+            width: 100%;
+            max-width: 920px;
         }
 
         .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25); border-color: rgba(99, 102, 241, 0.4); }
@@ -110,55 +115,20 @@
         }
         .tg-button:hover { background-color: #1A84B8; }
 
-        /* 📊 СТИЛИ ДЛЯ КРАСИВОЙ ТАБЛИЦЫ СКАЧИВАНИЯ СОФТА */
         .software-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: auto;
+            width: 100%; border-collapse: collapse; margin-top: auto;
         }
-
-        .software-table tr {
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .software-table tr:last-child {
-            border-bottom: none;
-        }
-
-        .software-table td {
-            padding: 12px 8px;
-            font-size: 0.85rem;
-            vertical-align: middle;
-        }
-
-        .app-name {
-            font-weight: 500;
-            color: var(--text-main);
-        }
-
-        .app-size {
-            font-size: 0.75rem;
-            color: var(--nav-color);
-            text-align: center;
-        }
-
+        .software-table tr { border-bottom: 1px solid var(--card-border); }
+        .software-table tr:last-child { border-bottom: none; }
+        .software-table td { padding: 12px 8px; font-size: 0.85rem; vertical-align: middle; }
+        .app-name { font-weight: 500; color: var(--text-main); }
+        .app-size { font-size: 0.75rem; color: var(--nav-color); text-align: center; }
+        
         .btn-exe {
-            display: inline-block;
-            background-color: #10B981; /* Зелёный */
-            color: #FFFFFF;
-            text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            float: right;
-            transition: background-color 0.2s, transform 0.1s;
+            display: inline-block; background-color: #10B981; color: #FFFFFF; text-decoration: none;
+            padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; float: right; transition: background-color 0.2s;
         }
-
-        .btn-exe:hover {
-            background-color: #059669;
-            transform: scale(1.03);
-        }
+        .btn-exe:hover { background-color: #059669; }
     </style>
 </head>
 <body>
@@ -207,6 +177,13 @@
         <div class="card" id="android">
             <div class="status-badge"><span class="status-dot"></span>В разработке</div>
             <h3>Прошивки Android</h3>
-            <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS).</p>
+            <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS). Инструкции по разблокировке загрузчиков.</p>
         </div>
 
+        <!-- 4. Приложения Windows (ВШИТА ВНИЗ НА ВСЮ ШИРИНУ) -->
+        <div class="card wide-card" id="windows">
+            <h3>Софт для Windows</h3>
+            <p>Приложения без вирусов проверено на Virustotal, скачивание в один клик!</p>
+            
+            <table class="software-table">
+                <tr>
