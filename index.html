@@ -6,7 +6,7 @@
     <title>NexaNode — Прошивки, Прокси и Джейлбрейк</title>
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     
-    <!-- ПОДКЛЮЧАЕМ ТОНКИЕ НАЧЕРТАНИЯ ШРИФТА MONTSERRAT -->
+    <!-- ТОНКИЙ ШРИФТ MONTSERRAT -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -45,7 +45,6 @@
         body {
             background-color: var(--bg-color); 
             color: var(--text-color); 
-            /* Задали тонкий базовый вес */
             font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
             font-weight: 400;
             margin: 0;
@@ -124,7 +123,7 @@
             color: var(--nav-color);
             text-decoration: none;
             margin-left: 25px;
-            font-weight: 500; /* Более тонкие ссылки меню */
+            font-weight: 500; 
             text-transform: uppercase;
             font-size: 0.8rem;
             letter-spacing: 1.5px;
@@ -142,7 +141,7 @@
 
         .main-hero h1 {
             font-size: 3rem;
-            font-weight: 300; /* УЛЬТРА-ТОНКИЙ ЗАГОЛОВОК */
+            font-weight: 300; 
             color: var(--text-main); 
             margin-bottom: 15px;
             letter-spacing: -0.5px;
@@ -151,7 +150,7 @@
 
         .main-hero p {
             font-size: 1.15rem;
-            font-weight: 300; /* ТОНКИЙ ТЕКСТ ПОДЗАГОЛОВКА */
+            font-weight: 300; 
             color: var(--text-color);
             max-width: 600px;
             margin: 0 auto;
@@ -159,14 +158,14 @@
             transition: color 0.3s;
         }
 
+        /* УМНАЯ СЕТКА: Автоматически подстраивает ширину под размер экрана планшета */
         .features-grid {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
-            flex-wrap: wrap; 
         }
 
         .card {
@@ -174,11 +173,12 @@
             backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 30px;
-            width: 280px;
-            min-height: 200px;
+            padding: 25px;
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03);
             transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .card:hover {
@@ -188,8 +188,8 @@
         }
 
         .card h3 {
-            font-size: 1.35rem;
-            font-weight: 500; /* Аккуратные заголовки карточек */
+            font-size: 1.25rem;
+            font-weight: 500; 
             color: var(--text-main);
             margin-top: 0;
             margin-bottom: 12px;
@@ -198,13 +198,13 @@
 
         .card p {
             color: var(--text-color);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
-            font-weight: 300; /* Тонкое описание внутри карточек */
+            font-weight: 300; 
+            margin: 0;
             transition: color 0.3s;
         }
 
-        /* КРАСИВАЯ ПЛАШКА «В РАЗРАБОТКЕ» */
         .status-badge {
             display: inline-flex;
             align-items: center;
@@ -217,6 +217,7 @@
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            align-self: flex-start;
         }
 
         .status-dot {
@@ -257,7 +258,6 @@
                 </g>
                 <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" class="logo-stroke" stroke-width="5" stroke-linejoin="round" />
               </g>
-              <!-- ТОНКИЙ И ЭЛЕГАНТНЫЙ ТЕКСТ ЛОГОТИПА -->
               <text x="130" y="64" font-family="'Montserrat', sans-serif" font-size="36" font-weight="400" letter-spacing="4px" class="logo-text">NEXANODE</text>
             </svg>
         </div>
@@ -274,17 +274,18 @@
     </main>
 
     <section class="features-grid">
+        <!-- 1. Быстрые Прокси -->
         <div class="card" id="proxy">
-            <div class="status-badge">
-                <span class="status-dot"></span>В разработке
-            </div>
+            <div class="status-badge"><span class="status-dot"></span>В разработке</div>
             <h3>Быстрые Прокси</h3>
             <p>Готовим приватные и стабильные прокси-серверы для безопасного обхода блокировок на iOS и Android.</p>
         </div>
 
+        <!-- 2. iOS & Cydia -->
         <div class="card" id="cydia">
             <h3>iOS & Cydia</h3>
             <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
         </div>
 
+        <!-- 3. Прошивки Android -->
         <div class="card" id="android">
