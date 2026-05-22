@@ -298,4 +298,4 @@
             <h3>iOS & Cydia</h3>
             <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и установке твиков из альтернативных магазинов.</p>
         </div>
-
+const btn = document.getElementById('themeBtn');// Проверяем прошлый выбор пользователя при загрузкеif (localStorage.getItem('theme') === 'dark') {document.documentElement.setAttribute('data-theme', 'dark');btn.textContent = 'Светлая тема';}// Логика кнопкиbtn.addEventListener('click', function() {if (document.documentElement.getAttribute('data-theme') === 'dark') {document.documentElement.removeAttribute('data-theme');btn.textContent = 'Тёмная тема';localStorage.setItem('theme', 'light');} else {document.documentElement.setAttribute('data-theme', 'dark');btn.textContent = 'Светлая тема';localStorage.setItem('theme', 'dark');}});
